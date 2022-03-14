@@ -1,0 +1,19 @@
+.img-content {
+  align-content: center;
+}
+
+.img-content > img {
+  min-width: 300px;
+  min-height: 470px;
+  margin: 10px 0;
+  display: inline-block;
+}
+
+.card > h4 {
+  margin: 10px;
+  min-height: 70px;
+}
+
+.card-footer a:first-child {
+  margin-right: 10px;
+}

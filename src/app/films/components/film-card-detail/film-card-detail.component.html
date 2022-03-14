@@ -1,0 +1,35 @@
+<div style="padding-bottom: 30px;">
+    <div class="card h-100">
+        <div class="img-content">
+            <img src="{{ film.poster }}" alt="">
+        </div>
+
+        <h4 class="card-title">{{ film.title | titlecase }}</h4>
+
+        <div class="card-content-year">
+            <i class="fa fa-calendar"></i>
+            <h3 class="card-year">{{ film.year }}</h3>
+        </div>
+
+        <div class="card-content-type">
+            <i class="fa fa-play"></i>
+            <h3 class="card-type">{{ film.type }}</h3>
+        </div>
+
+        <div class="card-footer" *ngIf="!onlyDisplay">
+            <a [ngClass]="film.watched ? 'btn btn-success' : 'btn btn-danger'" (click)="WatchedEventEmitter()"
+                href="javascript:void(0)">
+                <span>
+                    <span [ngClass]="film.watched? 'fa fa-toggle-on': 'fa fa-toggle-off'"></span> Watched
+                </span>
+            </a>
+
+            <a [ngClass]="film.wished ? 'btn btn-success' : 'btn btn-danger'" (click)="WishedEventEmitter()"
+                href="javascript:void(0)">
+                <span>
+                    <span [ngClass]="film.wished? 'fa fa-toggle-on': 'fa fa-toggle-off'"></span> Wish
+                </span>
+            </a>
+        </div>
+    </div>
+</div>

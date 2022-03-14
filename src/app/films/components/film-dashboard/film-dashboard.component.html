@@ -1,0 +1,30 @@
+<div class="container main-container">
+    <input matInput class="search-input form-control form-control-navbar" type="search" [(ngModel)]="TextSearch"
+        placeholder="Search by title" aria-label="Search">
+    <div class="btnSearch input-group-append">
+        <button class="btn btn-navbar" type="button" (click)="Search(tabref.selectedIndex)">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+
+    <div class="content row text-center">
+        <mat-tab-group #tabref class="tabs" [selectedIndex]="selectedIndex"
+            (selectedTabChange)="tabSelectedTabChange($event)">
+            <mat-tab label="Movies">
+                <film-card-detail class="col-md-4" *ngFor="let movie of movies;" [film]="movie"
+                    (watched)="changeWatched($event)" (wished)="changeWished($event)" [onlyDisplay]="false">
+                </film-card-detail>
+            </mat-tab>
+            <mat-tab label="Series">
+                <film-card-detail class="col-md-4" *ngFor="let serie of series;" [film]="serie"
+                    (watched)="changeWatched($event)" (wished)="changeWished($event)" [onlyDisplay]="false">
+                </film-card-detail>
+            </mat-tab>
+            <mat-tab label="Episode">
+                <film-card-detail class="col-md-4" *ngFor="let episodie of episodies;" [film]="episodie"
+                    (watched)="changeWatched($event)" (wished)="changeWished($event)" [onlyDisplay]="false">
+                </film-card-detail>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
