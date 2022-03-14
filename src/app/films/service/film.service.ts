@@ -9,22 +9,21 @@ export class FilmService {
 
     constructor(private http: HttpClient) { }
 
-    getMovies(name: string, type: number): Observable<OmdApi> {
-        var typeName = 'movie';
-
+    private setParamType(type: number) {
         switch (type) {
             case enumSearch.Movie:
-                typeName = 'movie'
-                break;
+                return 'movie';
             case enumSearch.Serie:
-                typeName = 'series'
-                break;
+                return 'series';
             case enumSearch.Episode:
-                typeName = 'episode'
-                break;
+                return 'episode';
             default:
-                break;
+                return 'movie';
         }
+    }
+
+    getMovies(name: string, type: number): Observable<OmdApi> {
+        var typeName = this.setParamType(type);
 
         return this.http.get<OmdApi>(`http://www.omdbapi.com/?s=${name}&Type=${typeName}&apikey=7e4041b4`);
     }
